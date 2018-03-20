@@ -1,0 +1,6 @@
+---
+<% scope.lookupvar('drush::versions').each do |version| %>
+  <%= version %> :
+    version : '<%= version %>'
+<% end %>
+

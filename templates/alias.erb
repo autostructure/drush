@@ -1,0 +1,72 @@
+$aliases['<%= @alias_name %>'] = array(
+<% if @parent -%>
+  'parent'       => '<%= @parent %>',
+<% end -%>
+<% if @root -%>
+  'root'         => '<%= @root %>',
+<% end -%>
+<% if @uri -%>
+  'uri'          => '<%= @uri %>',
+<% end -%>
+<% if @remote_host -%>
+  'remote-host'  => '<%= @remote_host %>',
+<% end -%>
+<% if @remote_user -%>
+  'remote-user'  => '<%= @remote_user %>',
+<% end -%>
+<% if @ssh_options -%>
+  'ssh-options'  => '<%= @ssh_options %>',
+<% end -%>
+<% if @db_url -%>
+  'db-url'       => '<%= @db_url %>',
+<% end -%>
+<% if @custom_options -%>
+  <%- @custom_options.each do |key, value| -%>
+  <%= "'#{key}' => '#{value}'" %>,
+  <%- end -%>
+<% end -%>
+<% if @path_aliases -%>
+  'path-aliases' => array(
+  <%- @path_aliases.each do |key, value| -%>
+    <%= "'#{key}' => '#{value}'" %>,
+  <%- end -%>
+  ),
+<% end -%>
+<% if @command_specific -%>
+  'command-specific' => array(
+  <%- @command_specific.each do |command, options| -%>
+    <%= "'#{command}'" %> => array(
+    <%- options.each do |key, value| -%>
+      <%- value = "'#{value}'" unless [true, false].include? value -%>
+      <%= "'#{key}' => #{value}" -%>,
+    <%- end -%>
+    ),
+  <%- end -%>
+  ),
+<% end -%>
+<% if @source_command_specific -%>
+  'source-command-specific' => array(
+  <%- @source_command_specific.each do |command, options| -%>
+    <%= "'#{command}'" %> => array(
+    <%- options.each do |key, value| -%>
+      <%- value = "'#{value}'" unless [true, false].include? value -%>
+      <%= "'#{key}' => #{value}" -%>,
+    <%- end -%>
+    ),
+  <%- end -%>
+  ),
+<% end -%>
+<% if @target_command_specific -%>
+  'target-command-specific' => array(
+  <%- @target_command_specific.each do |command, options| -%>
+    <%= "'#{command}'" %> => array(
+    <%- options.each do |key, value| -%>
+      <%- value = "'#{value}'" unless [true, false].include? value -%>
+      <%= "'#{key}' => #{value}" -%>,
+    <%- end -%>
+    ),
+  <%- end -%>
+  ),
+<% end -%>
+);
+
